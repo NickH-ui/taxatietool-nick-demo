@@ -73,7 +73,7 @@ function Button({ className, variant = "default", size = "default", type = "butt
     <button
       type={type}
       className={cn(
-        "inline-flex items-center justify-center rounded-md font-medium transition disabled:cursor-not-allowed disabled:opacity-50",
+        "inline-flex items-center justify-center rounded-md border-0 font-medium shadow-none outline-none transition disabled:cursor-not-allowed disabled:opacity-50",
         variantClass,
         sizeClass,
         className,
@@ -1031,7 +1031,7 @@ function PrintToggle({ value, onToggle }: { value: boolean; onToggle: () => void
   return (
     <button
       title={value ? "Print aan" : "Print uit"}
-      className={`rounded-md p-2 ${value ? "bg-emerald-100 text-emerald-700" : "bg-rose-100 text-rose-700"}`}
+      className={`rounded-md border border-transparent p-2 shadow-none outline-none ${value ? "bg-emerald-100 text-emerald-700" : "bg-rose-100 text-rose-700"}`}
       onClick={(e) => {
         e.stopPropagation();
         onToggle();
@@ -1046,7 +1046,7 @@ function SeenToggle({ value, onToggle }: { value: boolean; onToggle: () => void 
   return (
     <button
       title={value ? "Gezien" : "Niet gezien"}
-      className={`rounded-md p-2 ${value ? "bg-blue-100 text-blue-700" : "bg-slate-100 text-slate-500"}`}
+      className={`rounded-md border border-transparent p-2 shadow-none outline-none ${value ? "bg-blue-100 text-blue-700" : "bg-slate-100 text-slate-500"}`}
       onClick={(e) => {
         e.stopPropagation();
         onToggle();
@@ -1188,7 +1188,7 @@ function Row({
       <div />
 
       <button
-        className="pt-1 text-stone-400"
+        className="rounded-sm border border-transparent pt-1 text-stone-400 shadow-none outline-none"
         onClick={(e) => {
           e.stopPropagation();
           onSelect(item.id);
@@ -1200,7 +1200,7 @@ function Row({
       <div className="pt-0.5">
         {isContainer ? (
           <button
-            className="rounded p-1 hover:bg-stone-100"
+            className="rounded border border-transparent p-1 shadow-none outline-none hover:bg-stone-100"
             onClick={(e) => {
               e.stopPropagation();
               onToggleExpand(item.id);
@@ -1410,7 +1410,7 @@ function Row({
         <PrintToggle value={item.print !== false} onToggle={() => onTogglePrint(item.id)} />
         <button
           title={parkingActive ? "Uit parkeerplaats halen" : "In parkeerplaats plaatsen"}
-          className={`rounded-md p-2 ${parkingActive ? "bg-orange-200 text-orange-800" : "bg-slate-100 text-slate-500"}`}
+          className={`rounded-md border border-transparent p-2 shadow-none outline-none ${parkingActive ? "bg-orange-200 text-orange-800" : "bg-slate-100 text-slate-500"}`}
           onClick={(e) => {
             e.stopPropagation();
             onMoveToParking(item.id);
@@ -1420,7 +1420,7 @@ function Row({
         </button>
         <button
           title="Verwijder regel"
-          className="rounded-md p-2 bg-rose-100 text-rose-700"
+          className="rounded-md border border-transparent p-2 shadow-none outline-none bg-rose-100 text-rose-700"
           onClick={(e) => {
             e.stopPropagation();
             onDeleteRow(item.id);
@@ -1442,7 +1442,7 @@ export default function OpnametoolDemo() {
   const [focusField, setFocusField] = useState<string | null>(null);
   const [activeField, setActiveField] = useState<string | null>(null);
   const [insertTarget, setInsertTarget] = useState<{ targetId: string; mode: InsertMode } | null>(null);
-  const [history, setHistory] = useState<Snapshot[]>([]);
+    const [history, setHistory] = useState<Snapshot[]>([]);
   const [future, setFuture] = useState<Snapshot[]>([]);
   const [deviceView, setDeviceView] = useState<"tablet" | "mobile">("tablet");
   const [showCsv, setShowCsv] = useState(false);
@@ -1495,7 +1495,6 @@ export default function OpnametoolDemo() {
       ),
     [templateCompanyFilter, templateRoomFilter],
   );
-
 
   const csvPreview = useMemo(() => {
     const header = ["Sectie", "Niveau", "Ruimte", "Count", "Brand", "BrandModel", "Description", "Belongings", "Code", "Deelprijs", "Totaal", "Gezien", "Print", "Gewijzigd"];
@@ -1823,22 +1822,23 @@ export default function OpnametoolDemo() {
                 <div className="mt-0.5 text-sm text-stone-600">Aardamseweg 73A, 2461 CB Ter Aar • Taxatiedatum 17 maart 2026</div>
               </div>
 
-        <div className="sticky top-2 z-10 mb-1 rounded-md border border-stone-200 bg-stone-50 px-2 py-2 text-[11px] font-semibold uppercase tracking-wide text-stone-700 shadow-sm">
-          <div
-            className="grid items-center gap-0.5"
-            style={{ gridTemplateColumns: "30px 18px 30px 88px minmax(340px,1.9fr) 80px 100px 140px 182px" }}
-          >
-            <div className="flex items-center justify-center">Gezien</div>
-            <div />
-            <div />
-            <div className="text-left">Aantal</div>
-            <div className="text-left">Omschrijving</div>
-            <div className="text-left">Code</div>
-            <div className="text-right">Deelprijs</div>
-            <div className="text-right">Totaal</div>
-            <div className="text-right">Status</div>
-          </div>
-        </div>
+              <div className="sticky top-2 z-10 mb-1 px-1 py-1 text-[11px] font-semibold uppercase tracking-wide text-stone-700">
+                <div
+                  className="grid items-center gap-0.5 rounded-sm border border-stone-200 bg-stone-50 px-1 py-2 shadow-sm"
+                  style={{ gridTemplateColumns: "30px 0px 18px 30px 88px minmax(340px,1.9fr) 80px 100px 140px 182px" }}
+                >
+                  <div className="flex items-center justify-center">Gezien</div>
+                  <div />
+                  <div />
+                  <div />
+                  <div className="text-left">Aantal</div>
+                  <div className="text-left">Omschrijving</div>
+                  <div className="text-left">Code</div>
+                  <div className="text-right">Deelprijs</div>
+                  <div className="text-right">Totaal</div>
+                  <div className="text-right">Status</div>
+                </div>
+              </div>
 
               <div className="space-y-[2px]">
                 {normalizedRows.flatMap((item) => {
@@ -1975,6 +1975,7 @@ export default function OpnametoolDemo() {
           <Button className="h-16 w-16 rounded-full bg-white shadow-xl hover:bg-stone-50" variant="outline" onClick={copySelected} title="Kopieer geselecteerde regel" disabled={!selectedId}><Copy className="h-7 w-7" /></Button>
           <Button className="h-16 w-16 rounded-full bg-white shadow-xl hover:bg-stone-50" variant="outline" onClick={pasteClipboard} title="Plak onder geselecteerde regel of op geselecteerde invoegpositie" disabled={!clipboardItem}><ClipboardPaste className="h-7 w-7" /></Button>
         </div>
+
 
         <Dialog open={showCsv} onOpenChange={setShowCsv}>
           <DialogContent className="max-w-5xl rounded-[28px]">
