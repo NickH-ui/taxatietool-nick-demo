@@ -1364,7 +1364,7 @@ function Row({
             onChange={(value) => onInlineEdit(item.id, "code", value)}
           />
         ) : item.code ? (
-          <Badge variant="outline" className="rounded-full uppercase">{item.code}</Badge>
+          <Badge className="rounded-full uppercase">{item.code}</Badge>
         ) : (
           <span className="text-slate-300">—</span>
         )}
@@ -1442,7 +1442,6 @@ export default function OpnametoolDemo() {
   const [focusField, setFocusField] = useState<string | null>(null);
   const [activeField, setActiveField] = useState<string | null>(null);
   const [insertTarget, setInsertTarget] = useState<{ targetId: string; mode: InsertMode } | null>(null);
-  const [warningVisible, setWarningVisible] = useState(false);
   const [history, setHistory] = useState<Snapshot[]>([]);
   const [future, setFuture] = useState<Snapshot[]>([]);
   const [deviceView, setDeviceView] = useState<"tablet" | "mobile">("tablet");
@@ -1824,22 +1823,22 @@ export default function OpnametoolDemo() {
                 <div className="mt-0.5 text-sm text-stone-600">Aardamseweg 73A, 2461 CB Ter Aar • Taxatiedatum 17 maart 2026</div>
               </div>
 
-              <div className="sticky top-2 z-10 border-b border-stone-300 px-1 py-2 text-[11px] font-semibold uppercase tracking-wide text-stone-700">
-                <div
-                  className="grid items-center gap-0.5"
-                  style={{ gridTemplateColumns: "30px 18px 30px 88px minmax(340px,1.9fr) 80px 100px 140px 182px" }}
-                >
-                  <div className="flex items-center justify-center">Gezien</div>
-                  <div />
-                  <div />
-                  <div className="text-left">Aantal</div>
-                  <div className="text-left">Omschrijving</div>
-                  <div className="text-left">Code</div>
-                  <div className="text-right">Deelprijs</div>
-                  <div className="text-right">Totaal</div>
-                  <div className="text-right">Status</div>
-                </div>
-              </div>
+        <div className="sticky top-2 z-10 mb-1 rounded-md border border-stone-200 bg-stone-50 px-2 py-2 text-[11px] font-semibold uppercase tracking-wide text-stone-700 shadow-sm">
+          <div
+            className="grid items-center gap-0.5"
+            style={{ gridTemplateColumns: "30px 18px 30px 88px minmax(340px,1.9fr) 80px 100px 140px 182px" }}
+          >
+            <div className="flex items-center justify-center">Gezien</div>
+            <div />
+            <div />
+            <div className="text-left">Aantal</div>
+            <div className="text-left">Omschrijving</div>
+            <div className="text-left">Code</div>
+            <div className="text-right">Deelprijs</div>
+            <div className="text-right">Totaal</div>
+            <div className="text-right">Status</div>
+          </div>
+        </div>
 
               <div className="space-y-[2px]">
                 {normalizedRows.flatMap((item) => {
@@ -1976,18 +1975,6 @@ export default function OpnametoolDemo() {
           <Button className="h-16 w-16 rounded-full bg-white shadow-xl hover:bg-stone-50" variant="outline" onClick={copySelected} title="Kopieer geselecteerde regel" disabled={!selectedId}><Copy className="h-7 w-7" /></Button>
           <Button className="h-16 w-16 rounded-full bg-white shadow-xl hover:bg-stone-50" variant="outline" onClick={pasteClipboard} title="Plak onder geselecteerde regel of op geselecteerde invoegpositie" disabled={!clipboardItem}><ClipboardPaste className="h-7 w-7" /></Button>
         </div>
-
-        {warningVisible && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
-            <div className="rounded-3xl bg-white px-10 py-8 text-center shadow-2xl">
-              <div className="text-3xl font-bold text-rose-700">Waarschuwing: je hebt nog 5 minuten om de taxatie af te ronden.</div>
-              <div className="mt-4 text-xl text-slate-700 flex items-center justify-center gap-3">
-                ⏳ Tik... tak... tik... De klok kijkt mee 😅
-              </div>
-              <Button className="mt-6" onClick={() => setWarningVisible(false)}>Sluiten</Button>
-            </div>
-          </div>
-        )}
 
         <Dialog open={showCsv} onOpenChange={setShowCsv}>
           <DialogContent className="max-w-5xl rounded-[28px]">
