@@ -1364,7 +1364,7 @@ function Row({
             onChange={(value) => onInlineEdit(item.id, "code", value)}
           />
         ) : item.code ? (
-          <Badge variant="outline" className="rounded-full uppercase">{item.code}</Badge>
+          <Badge className="rounded-full uppercase">{item.code}</Badge>    
         ) : (
           <span className="text-slate-300">—</span>
         )}
