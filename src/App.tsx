@@ -1188,25 +1188,25 @@ function Row({
       <div />
 
       <button
-        className="rounded-sm border border-transparent pt-1 text-stone-400 shadow-none outline-none"
+        className="pt-1 text-stone-400 shadow-none outline-none bg-transparent border-0"
         onClick={(e) => {
           e.stopPropagation();
           onSelect(item.id);
         }}
       >
-        <GripVertical className="h-4 w-4" />
+        <GripVertical className="h-4 w-4 opacity-70" />
       </button>
 
-      <div className="pt-0.5">
+      <div className="pt-1">
         {isContainer ? (
           <button
-            className="rounded border border-transparent p-1 shadow-none outline-none hover:bg-stone-100"
+            className="flex h-5 w-5 items-center justify-center rounded-sm border-0 p-0.5 text-stone-500 shadow-none outline-none hover:bg-stone-100/70"
             onClick={(e) => {
               e.stopPropagation();
               onToggleExpand(item.id);
             }}
           >
-            {expanded[item.id] === false ? <ChevronRight className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+            {expanded[item.id] === false ? <ChevronRight className="h-3.5 w-3.5" /> : <ChevronDown className="h-3.5 w-3.5" />}
           </button>
         ) : null}
       </div>
