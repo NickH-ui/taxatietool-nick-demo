@@ -1808,9 +1808,9 @@ export default function OpnametoolDemo() {
           <CardContent className="p-4 md:p-6">
             <div className="rounded-[24px] border border-stone-200 bg-[#fbfaf7] p-4 md:p-6 shadow-inner">
               <div className="mb-5 border-b border-stone-200 pb-4">
-                <div className="text-xs uppercase tracking-[0.2em] text-stone-500">Taxatierapport 297277-02-0</div>
+                <div className="text-xs uppercase tracking-[0.2em] text-stone-500">Taxatierapport 123456-01-0</div>
                 <div className="mt-1 flex items-center justify-between gap-4">
-                  <div className="text-2xl font-semibold text-slate-900">Maatschap Kroes & Partners</div>
+                  <div className="text-2xl font-semibold text-slate-900">Troostwijk Taxaties B.V.</div>
                   <div className="rounded-xl border border-stone-200 bg-white px-4 py-2 text-sm">
                     <div className="flex items-center gap-4">
                       <div><div className="text-stone-500">Totaal vóór wijzigingen</div><div className="text-base font-semibold text-slate-900">{euro(INITIAL_TOTAL)}</div></div>
