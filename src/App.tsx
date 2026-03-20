@@ -1819,7 +1819,7 @@ export default function OpnametoolDemo() {
                     </div>
                   </div>
                 </div>
-                <div className="mt-0.5 text-sm text-stone-600">Aardamseweg 73A, 2461 CB Ter Aar • Taxatiedatum 17 maart 2026</div>
+                <div className="mt-0.5 text-sm text-stone-600">De Entree 227, 1101 HG Amsterdam • Taxatiedatum 17 maart 2026</div>
               </div>
 
               <div className="sticky top-2 z-10 mb-1 px-1 py-1 text-[11px] font-semibold uppercase tracking-wide text-stone-700">
