@@ -1364,7 +1364,7 @@ function Row({
             onChange={(value) => onInlineEdit(item.id, "code", value)}
           />
         ) : item.code ? (
-          <Badge className="rounded-full uppercase">{item.code}</Badge>    
+          <Badge variant="outline" className="rounded-full uppercase">{item.code}</Badge>
         ) : (
           <span className="text-slate-300">—</span>
         )}
@@ -1497,10 +1497,6 @@ export default function OpnametoolDemo() {
     [templateCompanyFilter, templateRoomFilter],
   );
 
-  useEffect(() => {
-    const timer = setTimeout(() => setWarningVisible(true), 5 * 60 * 1000);
-    return () => clearTimeout(timer);
-  }, []);
 
   const csvPreview = useMemo(() => {
     const header = ["Sectie", "Niveau", "Ruimte", "Count", "Brand", "BrandModel", "Description", "Belongings", "Code", "Deelprijs", "Totaal", "Gezien", "Print", "Gewijzigd"];
@@ -1828,16 +1824,21 @@ export default function OpnametoolDemo() {
                 <div className="mt-0.5 text-sm text-stone-600">Aardamseweg 73A, 2461 CB Ter Aar • Taxatiedatum 17 maart 2026</div>
               </div>
 
-              <div className="sticky top-2 z-10 grid grid-cols-[30px_18px_30px_88px_minmax(340px,1.9fr)_80px_100px_140px_182px] gap-0.5 border-b border-stone-300 px-1 py-2 text-[11px] font-semibold uppercase tracking-wide text-stone-700">
-                <div className="flex items-center justify-center">Gezien</div>
-                <div />
-                <div />
-                <div>Aantal</div>
-                <div>Omschrijving</div>
-                <div>Code</div>
-                <div className="text-right">Deelprijs</div>
-                <div className="text-right">Totaal</div>
-                <div className="text-right">Status</div>
+              <div className="sticky top-2 z-10 border-b border-stone-300 px-1 py-2 text-[11px] font-semibold uppercase tracking-wide text-stone-700">
+                <div
+                  className="grid items-center gap-0.5"
+                  style={{ gridTemplateColumns: "30px 18px 30px 88px minmax(340px,1.9fr) 80px 100px 140px 182px" }}
+                >
+                  <div className="flex items-center justify-center">Gezien</div>
+                  <div />
+                  <div />
+                  <div className="text-left">Aantal</div>
+                  <div className="text-left">Omschrijving</div>
+                  <div className="text-left">Code</div>
+                  <div className="text-right">Deelprijs</div>
+                  <div className="text-right">Totaal</div>
+                  <div className="text-right">Status</div>
+                </div>
               </div>
 
               <div className="space-y-[2px]">
